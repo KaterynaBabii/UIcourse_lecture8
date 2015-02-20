@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Inheritance and the prototype chain</title>
+	 <script type="text/javascript">
+		
+		<!--Prototype-based programming -->
+		String.prototype.sayHello = function(){
+	 	 return "Hello" + " "+ this;
+		}
+		'Peaple'.sayHello();
+ 		
+ 		//constructor
+		function MyObj() {
+			return this;   
+		} 
+		// prototype
+		MyObj.prototype={};
+		MyObj.prototype.hello=function(){ 
+			return 123; 
+		}  
+		//instatnce
+		var a = new MyObj();
+		console.log(a.hello()); 
+		console.log(a instanceof MyObj) ;
+
+		// Inheritance
+
+		function MyObj(){
+		  return this;
+		}
+		MyObj.prototype={};
+		MyObj.prototype.hello=function(){
+			return 123;
+		}
+		MyObj.prototype.close=function(){
+			return 123456;
+		}
+		var a = new MyObj();
+		console.log(a.hello());
+		console.log(a instanceof MyObj);
+
+		var b =new MyObj();
+		console.log(a.close());
+		console.log(b.close());
+
+		console.log(a.close());
+		console.log(b.close());
+
+		//
+
+		var human=function(){
+			return this;
+		}
+		human.prototype = {
+		  type:"human",
+		  age:0,
+		  whoAmI:function(){
+		    return this.type;
+		}
+		};
+
+		var a=new human();
+		a.age;
+		a.whoAmI();
+
+		function man(){
+			return this;
+		}
+		man.prototupe= new human;
+		man.prototupe.type = "man";
+
+		//no encapsulation in js but
+
+		obj.prototype_mathod // it is convention private
+
+		(function(global){
+			function privateMethod(){}
+			global.human = function(){}
+				global.human.prototupe={
+				say:function(){
+					return privateMethod();
+				}}
+		}(window));
+
+	</script>
+
+	</head>
+	<body>
+
+	</body>
+
+</html>
